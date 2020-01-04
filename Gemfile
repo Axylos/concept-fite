@@ -17,10 +17,14 @@ source 'https://rubygems.org'
 gem 'rake'
 
 # Component requirements
+gem 'activesupport', '>= 3.1'
+gem 'bcrypt'
 gem 'sass'
 gem 'haml'
-gem 'activerecord', '>= 3.1', :require => 'active_record'
+gem 'activerecord', '5.2.2', :require => 'active_record'
 gem 'pg'
+gem 'pry'
+gem 'slack-ruby-bot'
 
 # Test requirements
 gem 'rspec', :group => 'test'

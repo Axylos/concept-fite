@@ -1,0 +1,17 @@
+- error = @fite_list.errors.include?(:title)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :title, :class => 'control-label'
+  .controls
+    =f.text_field :title, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:title, :class => 'text-error') : pat(:example)
+  =f.label :active, :class => 'control-label'
+  .controls
+    =f.check_box :active, class: 'form-controls-checkbox', autofocus: false
+    %span.help-inline=error ? f.error_message_on(:active, :class => 'text-error') : 'is_active'
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:fite_lists, :index), :class => 'btn btn-default'

@@ -1,0 +1,10 @@
+%h2 Display for #{@list.title}
+
+%h4 Fites:
+- @list.fites.each do |fite|
+  %div
+    %h4 Position: #{fite.fite_position}
+    %h5 Left Side:
+    =fite.left_side
+    %h5 Right Side:
+    = fite.right_side

@@ -1,0 +1,57 @@
+%ul.nav.nav-tabs
+  %li.active=link_to tag_icon(:list, pat(:list)), url(:fite_lists, :index)
+  %li=link_to tag_icon(:plus, pat(:new)), url(:fite_lists, :new)
+
+.tabs-content
+  %table#list.table.table-striped.table-hover.table-condensed
+    %thead
+      %tr
+        %th.header.list-menu
+          .dropdown
+            %a.list-menu-toggle.dropdown-toggle{:href => '#', :'data-toggle' => :dropdown}
+              =tag_icon :magic
+              %span.caret
+            %ul.list-menu.dropdown-menu{:role => :menu}
+              %li.list-menu-wrapper=link_to tag_icon('check-square-o', pat(:select_all)), '#', :id => 'select-all', :class => 'list-menu-link'
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon('square-o', pat(:deselect_all)), '#', :id => 'deselect-all', :class => 'list-menu-link list-menu-link-disabled'
+              %li.list-menu-divider.divider
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon('trash-o', pat(:delete_selected)), '#', :id => 'delete-selected', :class => 'list-menu-link list-menu-link-disabled'
+                .list-menu-popover-delete-selected.popover.right
+                  .arrow
+                  %h3.popover-title=pat(:delete_selected_title)
+                  .popover-content
+                    = form_tag url(:fite_lists, :destroy_many), :method => :delete do
+                      =hidden_field_tag :fite_list_ids, :'data-delete-many-ids' => true
+                      =submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small'
+                      .btn.btn-default.btn-small.cancel=pat(:cancel)
+        %th.header= mat(:fite_list, :id)
+        %th.header= mat(:fite_list, :title)
+        %th.header= mat(:fite_list, :active)
+        %th.header= mat(:fite_list, :created_at)
+        %th.header= mat(:fite_list, :updated_at)
+        %th.header.list-row-action-header
+
+    %tbody
+      -@fite_lists.each do |fite_list|
+        %tr.list-row
+          %td.list-column.list-selectable
+            =check_box_tag 'fite_list_ids[]', :value => fite_list.id, :class => 'list-selectable-checkbox'
+          %td.list-column=fite_list.id
+          %td.list-column=fite_list.title
+          %td.list-column=fite_list.active
+          %td.list-column=time_ago_in_words fite_list.created_at
+          %td.list-column=time_ago_in_words fite_list.updated_at
+          %td.list-column.list-row-action
+            .list-row-action-wrapper
+              =link_to "View FiteList", href: url(:fite_lists, :show, id: fite_list.id), class: 'list-row-action-wrapper-link'
+              =link_to tag_icon(:edit), :href => url(:fite_lists, :edit, :id => fite_list.id), :rel => :tooltip, :title => "#{pat(:edit)} fite_list", :class => 'list-row-action-wrapper-link'
+              =link_to tag_icon('trash-o'), :rel => :tooltip, :title => "#{pat(:delete)} fite_list", :class => 'list-row-action-delete-one list-row-action-wrapper-link'
+              .popover.list-row-action-popover-delete-one.left
+                .arrow
+                %h3.popover-title=pat(:delete, :model => "fite_list")
+                .popover-content
+                  = form_tag url(:fite_lists, :destroy, :id => fite_list.id), :method => :delete do
+                    =submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small'
+                    .btn.btn-default.btn-small.cancel=pat(:cancel)

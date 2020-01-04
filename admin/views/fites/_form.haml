@@ -1,0 +1,31 @@
+- error = @fite.errors.include?(:left_side)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :left_side, :class => 'control-label'
+  .controls
+    =f.text_field :left_side, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:left_side, :class => 'text-error') : pat(:example)
+- error = @fite.errors.include?(:right_side)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :right_side, :class => 'control-label'
+  .controls
+    =f.text_field :right_side, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:right_side, :class => 'text-error') : pat(:example)
+- error = @fite.errors.include?(:fite_list_id)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :fite_list_id, :class => 'control-label'
+  .controls
+    =f.text_field :fite_list_id, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:fite_list_id, :class => 'text-error') : pat(:example)
+- error = @fite.errors.include?(:fite_position)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :fite_position, :class => 'control-label'
+  .controls
+    =f.text_field :fite_position, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:fite_position, :class => 'text-error') : pat(:example)
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:fites, :index), :class => 'btn btn-default'

@@ -8,7 +8,6 @@
 #     :database  => 'your_database',
 #     :pool      => 5,
 #     :username  => 'root',
-#     :password  => '',
 #     :host      => 'localhost',
 #     :socket    => '/tmp/mysql.sock'
 #   }
@@ -16,9 +15,7 @@
 ActiveRecord::Base.configurations[:development] = {
   :adapter   => 'postgresql',
   :database  => 'fite_app_development',
-  :username  => 'root',
-  :password  => '',
-  :host      => 'localhost',
+  :username  => 'axylos',
   :port      => 5432
 
 }
@@ -26,8 +23,7 @@ ActiveRecord::Base.configurations[:development] = {
 ActiveRecord::Base.configurations[:production] = {
   :adapter   => 'postgresql',
   :database  => 'fite_app_production',
-  :username  => 'root',
-  :password  => '',
+  :username  => 'axylos',
   :host      => 'localhost',
   :port      => 5432
 
@@ -36,9 +32,7 @@ ActiveRecord::Base.configurations[:production] = {
 ActiveRecord::Base.configurations[:test] = {
   :adapter   => 'postgresql',
   :database  => 'fite_app_test',
-  :username  => 'root',
-  :password  => '',
-  :host      => 'localhost',
+  :username  => 'axylos',
   :port      => 5432
 
 }
