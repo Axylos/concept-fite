@@ -25,6 +25,8 @@ gem 'activerecord', '5.2.2', :require => 'active_record'
 gem 'pg'
 gem 'pry'
 gem 'slack-ruby-bot'
+gem 'async-websocket', '~> 0.8.0'
+gem 'dotenv'
 
 # Test requirements
 gem 'rspec', :group => 'test'

@@ -14,14 +14,8 @@
 %fieldset.control-group{:class => error ? 'has-error' : ''}
   =f.label :fite_list_id, :class => 'control-label'
   .controls
-    =f.text_field :fite_list_id, :class => 'form-control input-large input-with-feedback'
-    %span.help-inline=error ? f.error_message_on(:fite_list_id, :class => 'text-error') : pat(:example)
-- error = @fite.errors.include?(:fite_position)
-%fieldset.control-group{:class => error ? 'has-error' : ''}
-  =f.label :fite_position, :class => 'control-label'
-  .controls
-    =f.text_field :fite_position, :class => 'form-control input-large input-with-feedback'
-    %span.help-inline=error ? f.error_message_on(:fite_position, :class => 'text-error') : pat(:example)
+    =f.select :fite_list_id, collection: @lists, fields: [:title, :id]
+    %span.help-inline=error ? f.error_message_on(:fite_list_id, :class => 'text-error') : pat(:does_a_thing)
 
 .form-actions
   =f.submit pat(:save), :class => 'btn btn-primary'

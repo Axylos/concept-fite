@@ -8,11 +8,13 @@ FiteApp::Admin.controllers :fites do
   get :new do
     @title = pat(:new_title, :model => 'fite')
     @fite = Fite.new
+    @lists = FiteList.all
     render 'fites/new'
   end
 
   post :create do
     @fite = Fite.new(params[:fite])
+    @fite.set_pos
     if @fite.save
       @title = pat(:create_title, :model => "fite #{@fite.id}")
       flash[:success] = pat(:create_success, :model => 'Fite')

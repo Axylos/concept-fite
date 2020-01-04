@@ -5,7 +5,7 @@ class Fite < ActiveRecord::Base
   validates_uniqueness_of :fite_position, scope: :fite_list
 
   def set_pos
-    pos = Fite.where(fite_list_id: self.fite_list_id).order(fite_position: desc).first.fite_position
+    pos = Fite.where(fite_list_id: self.fite_list_id).order(fite_position: :desc).first&.fite_position || 0
     pos += 1
     self.fite_position = pos
   end

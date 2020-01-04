@@ -5,7 +5,10 @@
 # just execute it from the command line.
 
 require File.expand_path("../config/boot.rb", __FILE__)
-require  'slack_votebot'
+require  './slack_votebot'
+require 'dotenv'
+Dotenv.load
+
 Thread.abort_on_exception = true
 
 Thread.new do

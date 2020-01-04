@@ -19,7 +19,7 @@ FiteApp::Admin.controllers :fite_lists do
 
   post :create do
     @fite_list = FiteList.new(params[:fite_list])
-    if @fite_list.raw_save
+    if @fite_list.save
       @title = pat(:create_title, :model => "fite_list #{@fite_list.id}")
       flash[:success] = pat(:create_success, :model => 'FiteList')
       params[:save_and_continue] ? redirect(url(:fite_lists, :index)) : redirect(url(:fite_lists, :edit, :id => @fite_list.id))
