@@ -1,8 +1,58 @@
 module SlackVote
   module Commands
     class Ping < SlackRubyBot::Commands::Base
-      command 'ping' do |client, data, _match|
-        client.say(channel: data.channel, text: 'pong')
+      command 'pang' do |client, data, _match|
+        client.web_client.chat_postMessage(channel: data.channel, as_user: true, blocks: [
+          {
+            "type": "section",
+            "text": {
+              "type": "mrkdwn",
+              "text": "This is a section block with a button."
+
+            },
+            "accessory": {
+              "type": "button",
+              "text": {
+                "type": "plain_text",
+                "text": "Click Me"
+
+              },
+              "value": "click_me_123",
+              "action_id": "button"
+
+            }
+
+          },
+          {
+            "type": "actions",
+            "block_id": "actionblock789",
+            "elements": [
+              {
+                "type": "button",
+                "text": {
+                  "type": "plain_text",
+                  "text": "Primary Button"
+
+                },
+                "style": "primary",
+                "value": "click_me_456"
+
+              },
+              {
+                "type": "button",
+                "text": {
+                  "type": "plain_text",
+                  "text": "Link Button"
+
+                },
+                "url": "https://api.slack.com/block-kit"
+
+              }
+
+            ]
+
+          }
+        ])
       end
 
       command 'list' do |client, data, _match|
