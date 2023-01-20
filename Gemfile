@@ -21,7 +21,7 @@ gem 'activesupport', '>= 3.1'
 gem 'bcrypt'
 gem 'sass'
 gem 'haml'
-gem 'activerecord', '5.2.2', :require => 'active_record'
+gem 'activerecord', '7.0.4.1', :require => 'active_record'
 gem 'pg'
 gem 'pry'
 gem 'slack-ruby-bot'
@@ -33,7 +33,7 @@ gem 'rspec', :group => 'test'
 gem 'rack-test', :require => 'rack/test', :group => 'test'
 
 # Padrino Stable Gem
-gem 'padrino', '0.14.4'
+gem 'padrino', '0.15.2'
 
 # Or Padrino Edge
 # gem 'padrino', :github => 'padrino/padrino-framework'
